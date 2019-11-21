@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db1:
+      image: "nginx:1.15"
+      ports:
+        - "801:80"
+        - "33061:3306"
+      volumes:
+        - ./config/ndb1_my.cnf:/etc/my.cnf
+        - ./mc:/mc
+      networks:
+        - cluster
+
+  db2:
+      image: "nginx:1.15"
+      ports:
+        - "802:80"
+        - "33062:3306"
+      volumes:
+        - ./config/ndb2_my.cnf:/etc/my.cnf
+        - ./mc:/mc
+      networks:
+        - cluster
+
+networks:
+  cluster:
+    external: true
