@@ -1,0 +1,60 @@
+version: '3'
+services:
+  redis1:
+      image: "redis"
+      ports:
+        - "63791:6379"
+      volumes:
+        - ./node1/redis.conf:/etc/redis/redis.conf
+      command: redis-server /etc/redis/redis.conf
+      networks:
+        - cluster
+  redis2:
+      image: "redis"
+      ports:
+        - "63792:6379"
+      volumes:
+        - ./node2/redis.conf:/etc/redis/redis.conf
+      command: redis-server /etc/redis/redis.conf
+      networks:
+        - cluster
+  redis3:
+      image: "redis"
+      ports:
+        - "63793:6379"
+      volumes:
+        - ./node3/redis.conf:/etc/redis/redis.conf
+      command: redis-server /etc/redis/redis.conf
+      networks:
+        - cluster
+  sentinel1:
+      image: "redis"
+      ports:
+        - "63794:26379"
+      volumes:
+        - ./sentinel1/sentinel.conf:/etc/redis/sentinel.conf
+      command: redis-sentinel /etc/redis/sentinel.conf
+      networks:
+        - cluster
+  sentinel2:
+      image: "redis"
+      ports:
+        - "63795:26379"
+      volumes:
+        - ./sentinel2/sentinel.conf:/etc/redis/sentinel.conf
+      command: redis-sentinel /etc/redis/sentinel.conf
+      networks:
+        - cluster
+  sentinel3:
+      image: "redis"
+      ports:
+        - "63796:26379"
+      volumes:
+        - ./sentinel3/sentinel.conf:/etc/redis/sentinel.conf
+      command: redis-sentinel /etc/redis/sentinel.conf
+      networks:
+        - cluster
+
+networks:
+  cluster:
+    external: true
