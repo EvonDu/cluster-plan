@@ -40,7 +40,7 @@
 ### 使用过的命令
 ```
 [建立网络]
-docker network create test
+docker network create cluster
 [容器]
 docker exec -it 6f028c203d9d /bin/bash
 docker exec -it cd40482e2d75 /bin/bash

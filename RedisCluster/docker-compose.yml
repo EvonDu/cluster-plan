@@ -1,0 +1,74 @@
+version: '3'
+services:
+  redis1:
+      image: "redis"
+      ports:
+        - "8011:8011"
+        - "18011:18011"
+      volumes:
+        - ./node1/redis.conf:/etc/redis/redis.conf
+      command: redis-server /etc/redis/redis.conf
+      networks:
+        cluster:
+          ipv4_address: 172.19.0.11
+  redis2:
+      image: "redis"
+      ports:
+        - "8012:8012"
+        - "18012:18012"
+      volumes:
+        - ./node2/redis.conf:/etc/redis/redis.conf
+      command: redis-server /etc/redis/redis.conf
+      networks:
+        cluster:
+          ipv4_address: 172.19.0.12
+  redis3:
+      image: "redis"
+      ports:
+        - "8013:8013"
+        - "18013:18013"
+      volumes:
+        - ./node3/redis.conf:/etc/redis/redis.conf
+      command: redis-server /etc/redis/redis.conf
+      networks:
+        cluster:
+          ipv4_address: 172.19.0.13
+  redis4:
+      image: "redis"
+      ports:
+        - "8014:8014"
+        - "18014:18014"
+      volumes:
+        - ./node4/redis.conf:/etc/redis/redis.conf
+      command: redis-server /etc/redis/redis.conf
+      networks:
+        cluster:
+          ipv4_address: 172.19.0.14
+  redis5:
+      image: "redis"
+      ports:
+        - "8015:8015"
+        - "18015:18015"
+      volumes:
+        - ./node5/redis.conf:/etc/redis/redis.conf
+      command: redis-server /etc/redis/redis.conf
+      networks:
+        cluster:
+          ipv4_address: 172.19.0.15
+  redis6:
+      image: "redis"
+      ports:
+        - "8016:8016"
+        - "18016:18016"
+      volumes:
+        - ./node6/redis.conf:/etc/redis/redis.conf
+      command: redis-server /etc/redis/redis.conf
+      networks:
+        cluster:
+          ipv4_address: 172.19.0.16
+
+networks:
+  cluster:
+      ipam:
+         config:
+           - subnet: 172.19.0.0/16
