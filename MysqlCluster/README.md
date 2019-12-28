@@ -11,7 +11,7 @@
     * `docker-compose up`
 3. 分别进入个子容器
     * `docker ps`
-    * `docker exec -it <id> /bin/bash`
+    * `docker-compose exec <服务名> bash`
 4. 为子容器添加环境变量
     * `echo 'export PATH=$PATH:/mc/mysql-cluster/bin' >> /etc/profile`
     * `source /etc/profile`
